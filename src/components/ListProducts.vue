@@ -21,8 +21,8 @@
       <tbody>
         <tr v-for="(value, index) in data" :key="index">
           <td>{{ value.id }}</td>
-          <td>{{ value.nombre }}</td>
-          <td>{{ value.sku }}</td>
+          <td>{{ value.nombre | pasarAMayuscula}}</td>
+          <td>{{ value.sku | pasarAMayuscula}}</td>
           <td>{{ value.precio }}</td>
           <td>{{ value.stock }}</td>
           <td v-if="value.estado == 1">Activo</td>

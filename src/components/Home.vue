@@ -4,9 +4,9 @@
         <div class="container">
           <h1 class="jumbotron-heading">Gestion de Stock</h1>
           <p class="lead text-muted">Aplicación para la gestión de stock de un supermercado. Permite Alta, Baja y Modificación de productos.</p>
-          <p>UlTIMO PRODUCTO CARGADO: {{this.$store.state.ultimoProd | pasarAMayuscula }}</p>
+          <p>ULTIMO PRODUCTO CARGADO: {{this.$store.state.ultimoProd | pasarAMayuscula }}</p>
         </div>
-      </section>
+      </section>s
 
       <div class="album py-5 bg-light">
         <div class="container">

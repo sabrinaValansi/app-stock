@@ -29,7 +29,7 @@ const mixinGlobal = {
                 if (data) {
                     this.axios.put(`${this.$store.state.url}/${this.id.id}`, data).then(res => {
                         if (res.data) {
-                            this.$router.push('/');
+                            this.$router.push('/list');
                         }
                     })
                 }
