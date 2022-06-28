@@ -4,7 +4,7 @@
         <div class="container">
           <h1 class="jumbotron-heading">Gestion de Stock</h1>
           <p class="lead text-muted">Aplicación para la gestión de stock de un supermercado. Permite Alta, Baja y Modificación de productos.</p>
-          <p v-if="this.$store.state.ultimoProd  !=''">ULTIMO PRODUCTO CARGADO: {{this.$store.state.ultimoProd | pasarAMayuscula }}</p>
+          <Vista :ultimoProd="ultimo"/>
         </div>
       </section>
 
@@ -43,11 +43,17 @@
 </template>
 
 <script>
+import Vista from './Vista.vue'
 export default {
   name: "HomeA",
+  components:{
+    Vista,
+  },
   data() {
     return {
       data: null,
+      colorDeTexto:'magenta',
+      ultimo:this.$store.state.ultimoProd
     };
   }
 };
