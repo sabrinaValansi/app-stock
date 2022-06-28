@@ -4,9 +4,9 @@
         <div class="container">
           <h1 class="jumbotron-heading">Gestion de Stock</h1>
           <p class="lead text-muted">Aplicación para la gestión de stock de un supermercado. Permite Alta, Baja y Modificación de productos.</p>
-          <p>ULTIMO PRODUCTO CARGADO: {{this.$store.state.ultimoProd | pasarAMayuscula }}</p>
+          <p v-if="this.$store.state.ultimoProd  !=''">ULTIMO PRODUCTO CARGADO: {{this.$store.state.ultimoProd | pasarAMayuscula }}</p>
         </div>
-      </section>s
+      </section>
 
       <div class="album py-5 bg-light">
         <div class="container">
@@ -36,19 +36,6 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-12">
-              <div class="card mb-4 box-shadow">
-                <div class="card-body">
-                  <h2 class="card-text text-center">Eliminacion de producto</h2>
-                  <input type="text" name="" id="" class="form-control" placeholder="Ingrese el ID del producto">
-                  <div class="d-flex justify-content-between align-items-center mt-3">
-                    <div class="col text-center">
-                      <button class="btn btn-sm btn-danger">Eliminar...</button>
-                  </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -60,7 +47,7 @@ export default {
   name: "HomeA",
   data() {
     return {
-      data: null
+      data: null,
     };
   }
 };

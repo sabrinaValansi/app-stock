@@ -7,29 +7,45 @@
         </div>
       </section>
       <form class="mt-5">
+
+         <validate tag="div">
         <label for="nombre">Nombre</label>
-        <input
-          type="text"
-          v-model="nombre"
-          name="nombre"
-          class="form-control"
-        />
+        <input type="text" v-model.trim="nombre" name="nombre" id="nombre" class="form-control" required :minlength="nombreMinLength">
+
+        <field-messages name="nombre" show="$dirty">
+            <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>
+            <div slot="minlength" class="alert alert-danger mt-1">El nombre de tener como minimo {{nombreMinLength}} caracteres</div>
+         </field-messages>
+        </validate>
+
+       <validate tag="div">
         <label for="sku">Sku</label>
-        <input type="text" v-model="sku" name="sku" class="form-control" />
+        <input type="text" v-model.trim="sku" name="sku" id="sku" class="form-control" required :minlength="skuLength">
+        
+        <field-messages name="sku" show="$dirty">
+            <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>
+            <div slot="minlength" class="alert alert-danger mt-1">El sku debe de tener como minimo {{skuLength}} caracteres</div>
+        </field-messages>
+        </validate>
+
+        <validate tag="div">
         <label for="precio">Precio</label>
-        <input
-          type="number"
-          v-model="precio"
-          name="precio"
-          class="form-control"
-        />
+        <input type="number" v-model="precio" name="precio" class="form-control" required :min="minimo">
+        <field-messages name="precio" show="$dirty">
+            <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>
+            <div slot="min" class="alert alert-danger mt-1">El precio minimo es ${{minimo}}.</div>
+        </field-messages>
+        </validate>
+
+       <validate tag="div">
         <label for="stock">Stock</label>
-        <input
-          type="number"
-          v-model="stock"
-          name="stock"
-          class="form-control"
-        />
+        <input type="number" v-model="stock" name="stock" class="form-control" required :min="minimo">
+        <field-messages name="stock" show="$dirty">
+            <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>
+            <div slot="min" class="alert alert-danger mt-1">El stock minimo es ${{minimo}}.</div>
+        </field-messages>
+        </validate>
+
         <label for="estado">Estado</label>
         <select name="estado" id="estado" v-model="estado" class="form-control">
           <option value="1">Activo</option>
@@ -58,6 +74,9 @@ export default {
       precio: null,
       stock: null,
       estado: null,
+      nombreMinLength : 3,
+      skuLength:6,
+      minimo:1
     };
   },
   mounted() {
