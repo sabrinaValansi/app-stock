@@ -6,16 +6,16 @@
           <h1 class="jumbotron-heading">Edicion de producto</h1>
         </div>
       </section>
-      <form class="mt-5">
+      <vue-form class="mt-5" :state="formState" @submit.prevent="saveData">
 
-         <validate tag="div">
-        <label for="nombre">Nombre</label>
-        <input type="text" v-model.trim="nombre" name="nombre" id="nombre" class="form-control" required :minlength="nombreMinLength">
+        <validate tag="div">
+          <label for="nombre">Nombre</label>
+          <input type="text" v-model.trim="nombre" name="nombre" id="nombre" class="form-control" required :minlength="nombreMinLength">
 
-        <field-messages name="nombre" show="$dirty">
-            <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>
-            <div slot="minlength" class="alert alert-danger mt-1">El nombre de tener como minimo {{nombreMinLength}} caracteres</div>
-         </field-messages>
+          <field-messages name="nombre" show="$dirty">
+              <div slot="required" class="alert alert-danger mt-1">Campo requerido</div>
+              <div slot="minlength" class="alert alert-danger mt-1">El nombre de tener como minimo {{nombreMinLength}} caracteres</div>
+          </field-messages>
         </validate>
 
        <validate tag="div">
@@ -51,10 +51,10 @@
           <option value="1">Activo</option>
           <option value="0">Inactivo</option>
         </select>
-        <button class="btn btn-primary my-2 mt-2" v-on:click="saveData">
+        <button class="btn btn-primary my-2 mt-2" :disabled="$invalid">
           Enviar
         </button>
-      </form>
+      </vue-form>
     </div>
     <section class="jumbotron text-center mt-5" v-else>
         <div class="container">
@@ -76,7 +76,8 @@ export default {
       estado: null,
       nombreMinLength : 3,
       skuLength:6,
-      minimo:1
+      minimo:1,
+      formState:{}
     };
   },
   mounted() {
